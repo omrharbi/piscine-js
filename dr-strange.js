@@ -1,31 +1,33 @@
-function addWeek(date){
- 
-    const day = +String(date.getUTCDate()).padStart(2, '0'); 
-    const daysOfWeek = [
-         'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday','Sunday',
-    ]; 
-     const secondsOfWeek=['secondMonday', 'secondTuesday', 'secondWednesday', 'secondThursday', 'secondFriday', 'secondSaturday','secondSunday']; 
+function addWeek(date) {
+     const daysOfWeekMap = new Map([
+        [1, 'Monday'],
+        [2, 'Tuesday'],
+        [3, 'Wednesday'],
+        [4, 'Thursday'],
+        [5, 'Friday'],
+        [6, 'Saturday'],
+        [7, 'Sunday'],
+        [8, 'secondMonday'],
+        [9, 'secondTuesday'],
+        [10, 'secondWednesday'],
+        [11, 'secondThursday'],
+        [12, 'secondFriday'],
+        [13, 'secondSaturday'],
+        [14, 'secondSunday']
+    ]); 
 
-    let dayOfWeek=""
- 
-    if(day>=1&&day<=6){
-        dayOfWeek  = daysOfWeek[day-1];  
+    let dates=new Date('0001-01-01')
+    let day=(date-dates)/(1000*60*60*24)+1
+    let getday=""
+     if(day===14){
+        getday=daysOfWeekMap.get(14)
+    }else {
+         getday=daysOfWeekMap.get(day%14)
     }
-    if(day>=7 && day<14){
-      dayOfWeek  = secondsOfWeek[(day)-7]; 
-    }
-    if(day>=14 && day<21){
-        dayOfWeek  = daysOfWeek[(day)-14]; 
-    }
-    if(day>=21 && day<28){
-        dayOfWeek  = secondsOfWeek[(day)-21]; 
-    }
-    if(day>=28 && (day<30 || 31)){
-        dayOfWeek  = daysOfWeek[(day)-28]; 
-    }else{
-        return console.log("no weeks");
-    }
-    console.log(dayOfWeek);
-}
+     return getday
+ }
 
-addWeek(new Date('0001-01-32')) 
+ function timeTravel(date){
+        date.date.setHours(date.hour,date.minute,date.second);
+        return date.date
+  }
