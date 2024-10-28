@@ -5,7 +5,7 @@ function filterShortStateName(arr) {
         }
     })
 }
-function filterStartVowel(arr) {
+ function filterStartVowel(arr) {
     let regex = /[aeiou]/g
     let c = arr.filter((c) => {
         if (c[0].toLowerCase().match(regex)) {

@@ -12,10 +12,16 @@ function flatMap(arr, func) {
         let element = func(arr[index], index, arr)
         if (Array.isArray(element)) {
             result.push(...element)
-        }else{
+        } else {
             result.push(element)
 
         }
     }
     return result
 }
+
+let arr = [1, 2, 3, 4]
+console.log(map(arr, function (c,i,arr) {
+    console.log(c,i,arr);
+
+}));
